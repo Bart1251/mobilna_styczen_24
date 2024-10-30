@@ -4,24 +4,18 @@
              x:Class="mobilna.MainPage">
 
     <StackLayout BackgroundColor="LightGreen">
-        <Label Text="Wizyta u weterynarza" FontSize="Large" BackgroundColor="SeaGreen"/>
-        <Entry Placeholder="Imię i nazwisko właściciela..."/>
+        <Label Text="Wizyta u weterynarza" FontSize="Large" BackgroundColor="SeaGreen" Padding="10"/>
+        <Entry x:Name="owner" Placeholder="Imię i nazwisko właściciela..."/>
         <Label Text="Gatunek"/>
-        <ListView x:Name="list">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <Label Text="{Binding .}"/>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+        <ListView x:Name="list" HasUnevenRows="True" SeparatorVisibility="Default" VerticalOptions="Fill" RowHeight="40" ItemSelected="SelectionChanged"></ListView>
         <StackLayout Orientation="Horizontal">
             <Label Text="Ile ma lat?"/>
             <Label BindingContext="{x:Reference slider}" Text="{Binding Value, StringFormat='{0:F0}'}"/>
             <Slider x:Name="slider" HorizontalOptions="FillAndExpand"/>
         </StackLayout>
-        <Entry Placeholder="Cel wizyty"/>
-        <TimePicker Time="16:00"/>
-        <Button Text="OK"/>
+        <Entry x:Name="purpose" Placeholder="Cel wizyty"/>
+        <TimePicker x:Name="time" Time="16:00"/>
+        <Button Text="OK" Clicked="DisplayData"/>
     </StackLayout>
 
 </ContentPage>
